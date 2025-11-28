@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Portfolio - Krishna Patel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1a73e8;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      padding: 60px 10%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-pic {
+      margin-bottom: 20px;
+    }
+
+    .profile-pic img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://via.placeholder.com/1200x400/1e3c72/ffffff?text=Hero+Image') no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 20px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: rgba(30, 60, 114, 0.9);
+      padding: 15px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      padding: 50px 10%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+      color: #1e3c72;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .info-list p {
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+
+    .projects .project {
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e0e4f0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects .project:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .projects .project h3 {
+      margin-bottom: 10px;
+      color: #1e3c72;
+      font-size: 22px;
+    }
+
+    .projects .tech {
+      font-size: 16px;
+      font-style: italic;
+      margin-top: 8px;
+      color: #667eea;
+    }
+
+    .projects .project img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .skill {
+      margin-bottom: 15px;
+    }
+
+    .skill span {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      background: #e0e4f0;
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    .link-list p {
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 10%;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      font-size: 16px;
+      margin-top: 50px;
+    }
+
+    footer span.heart {
+      color: #ff4b6a;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .social-icons {
+      margin-bottom: 10px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #667eea;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 36px;
+      }
+      header p {
+        font-size: 18px;
+      }
+      nav {
+        padding: 10px 5%;
+      }
+      nav a {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      .container {
+        padding: 30px 5%;
+      }
+      section {
+        padding: 20px;
+      }
+      section h2 {
+        font-size: 24px;
+      }
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+      .projects .project img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / HOME / INTRODUCTION -->
+  <header id="home">
+    <div class="profile-pic">
+      <img src="https://via.placeholder.com/150x150/667eea/ffffff?text=KP" alt="Krishna Patel">
+    </div>
+    <h1>🚀 Hi, I’m Krishna Patel</h1>
+    <p id="typing-text">
+      I am a B.Tech Student (AI & DS) at Zeal Institute with strong interests in Python,
+      Data Science, Web Development, AI, and Cloud Technologies. I enjoy building projects,
+      solving real-world problems, and continuously improving my technical skills.
+    </p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#links">Important Links</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- ABOUT ME -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="two-column info-list">
+        <div>
+          <p><strong>Name:</strong> Krishna Patel</p>
+          <p><strong>Course:</strong> B.Tech in Artificial Intelligence &amp; Data Science</p>
+          <p><strong>College:</strong> Zeal Institute</p>
+        </div>
+        <div>
+          <p><strong>Year:</strong> Second Year (SY)</p>
+          <p><strong>Location:</strong> Pune, Maharashtra</p>
+          <p><strong>Email:</strong> lrishnajpatel2006@gmail.com</p>
+          <p><strong>Contact No.:</strong> 9890927883</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <h3><i class="fas fa-code"></i> Programming Languages</h3>
+      <div class="skill">
+        <span>Python</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>C / C++</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 70%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Java</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 60%;"></div>
+        </div>
+      </div>
+
+      <h3><i class="fas fa-brain"></i> Data &amp; AI Skills</h3>
+      <div class="skill">
+        <span>Machine Learning</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Data Analysis (Pandas, NumPy)</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Data Visualization</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 70%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>SQL &amp; Database Management</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%;"></div>
+        </div>
+      </div>
+
+      <h3><i class="fas fa-globe"></i> Web &amp; Cloud Skills</h3>
+      <div class="skill">
+        <span>HTML / CSS</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 65%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>WordPress / Wix</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 60%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Cloud Basics (AWS / Azure)</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 55%;"></div>
+        </div>
+      </div>
+
+      <h3><i class="fas fa-tools"></i> Tools</h3>
+      <div class="skill">
+        <span>Jupyter Notebook</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Git &amp; GitHub</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>VS Code</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Excel</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Google Colab</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>📊 Project 1: [Project Title]</h3>
+        <p>
+          Write a short explanation of your project here (What it does, what problem it solves,
+          tools used, etc.).
+        </p>
+        <p class="tech"><strong>Tech Stack:</strong> Python / SQL / ML / HTML etc.</p>
+        <p><strong>Link:</strong> <a href="[GitHub Repository Link]" target="_blank">View on GitHub</a></p>
+        <p><strong>Screenshot:</strong> (Insert project image here in WordPress / Wix or HTML &lt;img&gt; tag)</p>
+      </div>
+
+      <div class="project">
+        <h3>🤖 Project 2: [Project Title]</h3>
+        <p>
+          Add 3–4 lines summarizing this project. Describe the idea, your role,
+          and the outcome.
+        </p>
+        <p class="tech"><strong>Tech Stack:</strong> Python / ML etc.</p>
+        <p><strong>Link:</strong> <a href="[GitHub Repository Link]" target="_blank">View on GitHub</a></p>
+        <img src="https://via.placeholder.com/400x200/764ba2/ffffff?text=Project+Screenshot" alt="Project 2 Screenshot">
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+    <section id="certifications">
+      <h2>Certifications &amp; Achievements</h2>
+      <ul>
+        <li>Completed Python Basics – HackerRank</li>
+        <li>Completed SQL Intermediate – HackerRank</li>
+        <li>Machine Learning Course – Coursera</li>
+        <li>Participation in Hackathons / Competitions</li>
+        <li>Winner / Participant in College Tech Fest</li>
+      </ul>
+    </section>
+
+    <!-- IMPORTANT LINKS -->
+    <section id="links">
+      <h2>Important Links</h2>
+      <div class="link-list">
+        <p><i class="fab fa-github"></i> <strong>GitHub Profile:</strong><br>
+          👉 <a href="https://github.com/[your-username]" target="_blank">
+            https://github.com/[your-username]
+          </a>
+        </p>
+
+        <p><i class="fab fa-linkedin"></i> <strong>LinkedIn Profile:</strong><br>
+          👉 <a href="https://www.linkedin.com/in/[your-username]" target="_blank">
+            https://www.linkedin.com/in/[your-username]
+          </a>
+        </p>
+
+        <p><i class="fab fa-hackerrank"></i> <strong>HackerRank Profile:</strong><br>
+          👉 <a href="https://www.hackerrank.com/[your-username]" target="_blank">
+            https://www.hackerrank.com/[your-username]
+          </a>
+        </p>
+
+        <p><i class="fab fa-leetcode"></i> <strong>LeetCode Profile:</strong><br>
+          👉 <a href="https://leetcode.com/[your-username]" target="_blank">
+            https://leetcode.com/[your-username]
+          </a>
+        </p>
+
+        <p><i class="fas fa-globe"></i> <strong>Portfolio Website Link (if any):</strong><br>
+          👉 <a href="https://yourname.wordpress.com" target="_blank">https://yourname.wordpress.com</a><br>
+          👉 <a href="https://yourname.wixsite.com" target="_blank">https://yourname.wixsite.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <h2>Resume (PDF Download)</h2>
+      <p>
+        Upload your resume file in the same folder as this HTML file (for example, <strong>resume.pdf</strong>)
+        and update the link below.
+      </p>
+      <a class="btn" href="resume.pdf" target="_blank">Click to Download My Resume</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Have a project idea or collaboration in mind?<br>
+        Feel free to reach out!
+      </p>
+      <p><strong>Email:</strong> lrishnajpatel2006@gmail.com</p>
+      <p><strong>LinkedIn:</strong> <a href="[your-link]" target="_blank">[your-link]</a></p>
+      <p><strong>GitHub:</strong> <a href="[your-github-link]" target="_blank">[your-github-link]</a></p>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://github.com/[your-username]" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/[your-username]" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.hackerrank.com/[your-username]" target="_blank"><i class="fab fa-hackerrank"></i></a>
+      <a href="https://leetcode.com/[your-username]" target="_blank"><i class="fab fa-leetcode"></i></a>
+    </div>
+    © 2025 Krishna Patel | Designed using WordPress / Wix<br />
+    Made with <span class="heart">❤</span> by an aspiring AI &amp; DS Engineer.
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+</body>
+<script>
+  // Typing Animation
+  const text = "I am a B.Tech Student (AI & DS) at Zeal Institute with strong interests in Python, Data Science, Web Development, AI, and Cloud Technologies. I enjoy building projects, solving real-world problems, and continuously improving my technical skills.";
+  const typingText = document.getElementById('typing-text');
+  let index = 0;
+
+  function typeWriter() {
+    if (index < text.length) {
+      typingText.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, 50);
+    }
+  }
+
+  // Start typing animation when page loads
+  window.onload = function() {
+    typingText.innerHTML = '';
+    typeWriter();
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  };
+</script>
+</html>
+
